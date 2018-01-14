@@ -1,3 +1,4 @@
+import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -9,6 +10,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,9 +31,7 @@ public class Candyman implements ActionListener{
 		frame.setVisible(true);
 		button.addActionListener(this);
 		
-		frame = new JFrame();
-		panel = new JPanel();
-		button = new JButton();
+		
 	}
 	public static void main(String[] args) {
 		new Candyman().createUI();
@@ -52,20 +52,14 @@ public class Candyman implements ActionListener{
 	static final int CREEPY = 0;
 	static final int SCREAM = 1;
 	
-public static void playSound(int whichSound) {
-	File soundFile = null;
+public void playSound(int whichSound) {
+	AudioClip sound = null;
    	 if (whichSound == CREEPY)
-   		 soundFile = new File(
-   				 "Creepy.wav");
+   		 sound = JApplet.newAudioClip(getClass().getResource("Song3.mp3"));
    	 else if (whichSound == SCREAM)
-   		 soundFile = new File(
-   				 "Yell.wav");
-   	 try {
-   		 AudioInputStream audioInputStream = AudioSystem
-   				 .getAudioInputStream(soundFile);
-   		 Clip clip = AudioSystem.getClip();
-   		 clip.open(audioInputStream);
-   		 clip.start();
+   		 sound = JApplet.newAudioClip(getClass().getResource("Song4.mp3"));
+   	sound.play(); try {
+   		 
    		 Thread.sleep(3400);
    	 } catch (Exception ex) {
    		 ex.printStackTrace();
