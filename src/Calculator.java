@@ -1,9 +1,12 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Calculator {
+public class Calculator implements ActionListener{
 
 JFrame frame;
 JPanel panel;
@@ -17,10 +20,7 @@ String S1;
 String S2;
 int num1;
 int num2;
-int addFinal;
-int subFinal;
-int mulFinal;
-int divFinal;
+
 
 
 public void add() {
@@ -28,7 +28,7 @@ public void add() {
 	S2 = tf2.getText();
    num1 = Integer.parseInt(S1);
    num2 = Integer.parseInt(S2);
-   addFinal = num1 + num2;
+   System.out.println(num1 + num2);
 }
 
 public void subtract() {
@@ -36,7 +36,7 @@ public void subtract() {
 	S2 = tf2.getText();
    num1 = Integer.parseInt(S1);
    num2 = Integer.parseInt(S2);
-   subFinal = num1 - num2;
+   System.out.println(num1 - num2);
 }
 
 public void multiply() {
@@ -44,7 +44,7 @@ public void multiply() {
 	S2 = tf2.getText();
    num1 = Integer.parseInt(S1);
    num2 = Integer.parseInt(S2);
-   mulFinal = num1*num2;
+  System.out.println(num1*num2);
 }
 
 public void divide() {
@@ -52,7 +52,7 @@ public void divide() {
 	S2 = tf2.getText();
    num1 = Integer.parseInt(S1);
    num2 = Integer.parseInt(S2);
-   divFinal = num1/num2;
+   System.out.println(num1/num2);
 }
 
 
@@ -72,6 +72,27 @@ panel.add(mul);
 panel.add(div);
 frame.setVisible(true);
 frame.setSize(200, 450);
+add.addActionListener(this);
+sub.addActionListener(this);
+mul.addActionListener(this);
+div.addActionListener(this);
+}
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	if(e.getSource()==add) {
+		add();
+	}
+	else if(e.getSource()==sub) {
+		subtract();
+	}
+	else if(e.getSource()==mul) {
+		multiply();
+	}
+	else if(e.getSource()==div) {
+		divide();
+	}
 }
 
 
