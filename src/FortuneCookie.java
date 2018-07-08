@@ -43,7 +43,7 @@ public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	if(e.getSource()==button) {
 		System.out.println("Woohoo!");
-		Random r = new Random()
+		Random r = new Random();
 		ran = r.nextInt(5);
 		if(ran==0) {
 			System.out.println("You might become rich");
